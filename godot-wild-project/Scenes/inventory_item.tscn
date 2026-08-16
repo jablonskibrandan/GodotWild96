@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://sxvuc0f1ea8t"]
+
+[ext_resource type="Script" uid="uid://bxch8ce68ecx" path="res://Scripts/inventory_item.gd" id="1_gj4io"]
+[ext_resource type="Texture2D" uid="uid://dafirvohfn3iy" path="res://icon.svg" id="2_hehin"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ooqca"]
+
+[node name="InventoryItem" type="Node3D" unique_id=1581412066 groups=["Item"]]
+script = ExtResource("1_gj4io")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1499781350]
+texture = ExtResource("2_hehin")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=140686857]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=526728128]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_ooqca")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

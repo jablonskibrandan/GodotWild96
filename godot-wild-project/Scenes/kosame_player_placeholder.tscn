@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bsy3ueunivn0"]
+
+[ext_resource type="Script" uid="uid://b4crn8ioxs1se" path="res://Scripts/kosame_player_placeholder.gd" id="1_b8k50"]
+[ext_resource type="PackedScene" uid="uid://dv018igcp14k5" path="res://Scenes/inventory_ui.tscn" id="1_t8wuw"]
+
+[node name="Player" type="CharacterBody3D" unique_id=845461874]
+process_mode = 3
+script = ExtResource("1_b8k50")
+
+[node name="InventoryUI" type="CanvasLayer" parent="." unique_id=1108425097]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InventoryUI" unique_id=712965283]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.47843137, 1)
+
+[node name="Label" type="Label" parent="InventoryUI/ColorRect" unique_id=327128663]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_top = 60.0
+offset_right = 150.0
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Inventory"
+
+[node name="Inventory_UI" parent="InventoryUI/ColorRect" unique_id=1999953120 instance=ExtResource("1_t8wuw")]
+layout_mode = 1

@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dwqw4wvqp21fq"]
+
+[ext_resource type="Script" uid="uid://b3qx0ld0qk1sf" path="res://Scripts/UI/inventory_slot.gd" id="1_0v82l"]
+
+[node name="InventorySlot" type="Control" unique_id=1764446796]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 110.0
+script = ExtResource("1_0v82l")
+
+[node name="OuterBorder" type="ColorRect" parent="." unique_id=2011414231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8039216, 0.38039216, 0.2, 1)
+
+[node name="InnerBorder" type="ColorRect" parent="." unique_id=1365810439]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.81960785, 0.8, 0.7529412, 1)
+
+[node name="Quantity_Label" type="Label" parent="InnerBorder" unique_id=902391249]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ItemIcon" type="Sprite2D" parent="InnerBorder" unique_id=165581911]
+
+[node name="ItemButton" type="Button" parent="." unique_id=1097877221]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DetailsPanel" type="ColorRect" parent="." unique_id=362476759]
+visible = false
+layout_mode = 1
+offset_left = -3.0
+offset_top = -55.0
+offset_right = 37.0
+offset_bottom = -15.0
+
+[node name="Name_Label" type="Label" parent="DetailsPanel" unique_id=1307022713]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Type_Label" type="Label" parent="DetailsPanel" unique_id=1096665219]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Item_Effect" type="Label" parent="DetailsPanel" unique_id=1284102078]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="UsagePanel" type="ColorRect" parent="." unique_id=1734764774]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = -44.0
+offset_right = 41.0
+offset_bottom = -4.0
+
+[node name="Button" type="Button" parent="UsagePanel" unique_id=1239142126]
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 12.0
+text = "Use"
+
+[connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]

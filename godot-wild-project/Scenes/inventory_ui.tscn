@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dv018igcp14k5"]
+
+[ext_resource type="Script" uid="uid://pisfiml3je8n" path="res://Scripts/UI/inventory_ui.gd" id="1_8su62"]
+[ext_resource type="PackedScene" uid="uid://dwqw4wvqp21fq" path="res://Scenes/inventory_slot.tscn" id="2_os1l6"]
+
+[node name="Inventory_UI" type="Control" unique_id=1999953120]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8su62")
+
+[node name="InventoryGrid" type="GridContainer" parent="." unique_id=687556710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -124.0
+offset_right = 400.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 150
+columns = 5
+
+[node name="InventorySlot" parent="InventoryGrid" unique_id=1764446796 instance=ExtResource("2_os1l6")]
+layout_mode = 2
