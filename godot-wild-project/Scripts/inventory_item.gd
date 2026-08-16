@@ -16,6 +16,8 @@ var player_in_range = false
 @onready var icon_sprite: Sprite3D = $Sprite3D
 
 func _ready():
+	print(item_name)
+	pickup_item()
 	# Set the texture to reflect in the game
 	if not Engine.is_editor_hint():
 		icon_sprite.texture = item_texture
@@ -38,9 +40,8 @@ func pickup_item():
 		"texture": item_texture,
 		"scene_path": scene_path
 	}
-	if Globals.player_node:
-		Globals.add_item(item)
-		self.queue_free()
+	Globals.add_item(item)
+	self.queue_free()
 
 # If player is in range, show UI and make item pickable
 func _on_area_3d_area_entered(area: Area3D) -> void:

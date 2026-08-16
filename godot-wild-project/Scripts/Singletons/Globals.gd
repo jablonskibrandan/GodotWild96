@@ -9,9 +9,6 @@ var inventory = []
 signal inventory_updated
 
 
-# Scene and node references
-var player_node: Node = null
-
 
 
 func _ready(): 

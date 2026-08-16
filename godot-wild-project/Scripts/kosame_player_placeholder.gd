@@ -2,6 +2,11 @@ extends CharacterBody3D
 
 
 @onready var inventory_ui: CanvasLayer = $InventoryUI
+@onready var inventory_item: Node3D = $InventoryItem
+
+
+func _ready() -> void:
+	pass
 
 
 func _unhandled_input(event: InputEvent) -> void:

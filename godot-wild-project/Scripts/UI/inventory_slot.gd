@@ -25,7 +25,6 @@ func _on_item_button_mouse_entered():
 	if item != null:
 		usage_panel.visible = false
 		details_panel.visible = true
-	print("a")
 
 # Hide item details on hover exit
 func _on_item_button_mouse_exited():
