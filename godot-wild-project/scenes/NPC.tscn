@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bdtdhi5mcsbt1"]
+
+[ext_resource type="Script" uid="uid://cqvd7kir6bhb3" path="res://Scripts/NPC/npc_interactable.gd" id="1_8ys07"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dmehe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7nov"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmehe"]
+size = Vector3(1.439209, 1, 1)
+
+[node name="NPC" type="CharacterBody3D" unique_id=1940996523]
+script = ExtResource("1_8ys07")
+display_name = "Cool Guy NPC"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1575016850]
+mesh = SubResource("CapsuleMesh_dmehe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=128310026]
+shape = SubResource("CapsuleShape3D_n7nov")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=279062373]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=2030006319]
+transform = Transform3D(1, 0, 0, 0, 1.7643602, 0, 0, 0, 1.8913059, -0.012329102, 0, 0)
+shape = SubResource("BoxShape3D_dmehe")

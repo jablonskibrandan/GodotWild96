@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dvnfxsycgsdmo"]
+
+[ext_resource type="PackedScene" uid="uid://bdtdhi5mcsbt1" path="res://scenes/NPC.tscn" id="1_sasra"]
+[ext_resource type="Script" uid="uid://c4edea23h3iyd" path="res://Scripts/Player/click_move_player.gd" id="1_uhqqe"]
+[ext_resource type="Script" uid="uid://bkwxtt0p2mfo2" path="res://Scripts/Player/orbiting_camera_rig.gd" id="2_ia1lp"]
+[ext_resource type="Script" uid="uid://c34kcj536mkh" path="res://Scripts/UI/interaction_ui.gd" id="4_coq8p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmehe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dmehe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dmehe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dmehe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1lp"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dmehe"]
+material = SubResource("StandardMaterial3D_ia1lp")
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.2
+radial_segments = 32
+
+[node name="World" type="Node3D" unique_id=1377428761]
+
+[node name="NPC" parent="." unique_id=1940996523 instance=ExtResource("1_sasra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.514153, -17.155222)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=782879741]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1508704000]
+transform = Transform3D(119.60808, 0, 0, 0, 1, 0, 0, 0, 73.39937, 0, 0, 0)
+shape = SubResource("BoxShape3D_dmehe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=192097455]
+transform = Transform3D(119.60808, 0, 0, 0, 1, 0, 0, 0, 73.39937, 0, 0, 0)
+mesh = SubResource("BoxMesh_dmehe")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2042654205 node_paths=PackedStringArray("interaction_ui", "camera", "move_marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0651989, 0)
+script = ExtResource("1_uhqqe")
+rotation_speed = 20.0
+interaction_ui = NodePath("../InteractionUI")
+camera = NodePath("../OrbitingCameraRig/PitchPivot/Camera3D")
+move_marker = NodePath("../MoveMarker")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1679184931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.543319, 0)
+mesh = SubResource("CapsuleMesh_dmehe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1643410858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5629109, 0)
+shape = SubResource("CapsuleShape3D_dmehe")
+
+[node name="OrbitingCameraRig" type="Node3D" parent="." unique_id=1209772763 node_paths=PackedStringArray("target", "pitch_pivot", "camera")]
+script = ExtResource("2_ia1lp")
+target = NodePath("../CharacterBody3D")
+pitch_pivot = NodePath("PitchPivot")
+camera = NodePath("PitchPivot/Camera3D")
+
+[node name="PitchPivot" type="Node3D" parent="OrbitingCameraRig" unique_id=983159586]
+
+[node name="Camera3D" type="Camera3D" parent="OrbitingCameraRig/PitchPivot" unique_id=421183906]
+
+[node name="MoveMarker" type="Node3D" parent="." unique_id=1404304952]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MoveMarker" unique_id=1435898777]
+transform = Transform3D(0.99999845, 0, 0.0017453283, 0, 1, 0, -0.0017453283, 0, 0.99999845, 0, 0, 0)
+mesh = SubResource("CylinderMesh_dmehe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1688522444]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 6.8885307, 0)
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=317967966 node_paths=PackedStringArray("hover_panel", "name_label")]
+script = ExtResource("4_coq8p")
+hover_panel = NodePath("HoverPanel")
+name_label = NodePath("HoverPanel/NameLabel")
+
+[node name="HoverPanel" type="PanelContainer" parent="InteractionUI" unique_id=706449792]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="InteractionUI/HoverPanel" unique_id=868159904]
+layout_mode = 2
